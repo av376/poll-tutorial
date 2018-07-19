@@ -1,0 +1,38 @@
+Main tab:
+  python3 -m venv poll_tutorial
+  cd poll_tutorial
+  source bin/activate
+  git init
+  pip install Django==2.0.7
+  django-admin startproject mysite
+  cd mysite
+  python manage.py startapp polls         # creates an app
+  # Edit urls files in /poll and /mysite to set up an index
+  python manage.py migrate                # make tables for default django apps
+  # Create models for the poll
+  # Update mysite/settings to include poll app
+  python manage.py makemigrations polls   # Store changes as a migration file
+  python manage.py sqlmigrate polls 0001  # View the SQL commands that are derived from the above migration
+  python manage.py migrate                # Create those model tables in the DB
+
+
+
+
+Other tab:
+  cd poll_tutorial
+  source bin/activate
+  cd mysite
+  python manage.py runserver
+  # deactivate
+
+Access DB:
+  sqlite3 db.sqlite3
+  .table
+  .schema
+
+Questions:
+  How are database table relations encoded in sqlite?
+  Is it simply ForeignKey?
+    Common database relationships: many-to-one, many-to-many, and one-to-one
+
+
